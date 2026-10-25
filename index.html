@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tilahun Getie, fourth-year student at Debre Markos University. Python, Tkinter, SQLite and Django projects.">
+<title>Tilahun Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long page with a sticky nav; split hero (text + monogram card), card grids below. */
+:root {
+  --bg: #F1F5F3;
+  --surface: #FFFFFF;
+  --fg: #12201D;
+  --muted: #55655F;
+  --line: #D6E0DB;
+  --accent: #0B6E4F;
+  --accent-fg: #FFFFFF;
+  --warm: #C98400;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D1614; --surface: #15211E; --fg: #E5EEEA; --muted: #9AAFA7;
+    --line: #25362F; --accent: #3FCB9A; --accent-fg: #07130F; --warm: #E8B23A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D1614; --surface: #15211E; --fg: #E5EEEA; --muted: #9AAFA7;
+  --line: #25362F; --accent: #3FCB9A; --accent-fg: #07130F; --warm: #E8B23A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  background: var(--bg); z-index: 10;
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1080px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.08; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+
+/* header */
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 11;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+}
+.bar { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 700; font-size: 18px; }
+.mark { width: 34px; height: 34px; border-radius: 10px; background: var(--accent); color: var(--accent-fg); display: grid; place-items: center; font-size: 16px; }
+.brand small { display: block; font-family: var(--font-mono); font-weight: 400; font-size: 10.5px; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; margin-top: 1px; }
+nav { display: flex; gap: 4px; flex-wrap: wrap; }
+nav a { text-decoration: none; font-size: 15px; font-weight: 500; padding: 6px 12px; border-radius: 999px; color: var(--muted); }
+nav a:hover { color: var(--fg); background: var(--surface); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center; padding-block: 64px 56px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+.eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--accent); }
+.hero h1 { font-size: clamp(38px, 6.4vw, 68px); font-weight: 700; letter-spacing: -0.02em; margin-top: 18px; }
+.hero h1 span { color: var(--accent); }
+.hero p.lead { margin-top: 20px; font-size: 18px; color: var(--muted); max-width: 54ch; }
+.hero p.lead strong { color: var(--fg); font-weight: 600; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid var(--line); background: var(--surface); }
+.btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.btn:hover { transform: translateY(-1px); }
+.status { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; font-size: 14px; color: var(--muted); }
+.status i { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
+
+.portrait {
+  position: relative; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 28px; overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 80% 10%, color-mix(in srgb, var(--warm) 38%, transparent), transparent 60%),
+    linear-gradient(160deg, var(--accent), color-mix(in srgb, var(--accent) 55%, var(--fg)));
+  display: grid; place-items: center; color: var(--accent-fg);
+}
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
+.portrait .tag { position: absolute; left: 16px; bottom: 16px; background: var(--surface); color: var(--fg); border-radius: 12px; padding: 10px 14px; font-size: 13px; line-height: 1.35; }
+.portrait .tag b { font-family: var(--font-mono); font-weight: 500; display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 18px; background: var(--surface); overflow: hidden; }
+.facts div { padding: 18px 20px; border-right: 1px solid var(--line); min-width: 0; }
+.facts div:last-child { border-right: 0; }
+.facts b { display: block; font-family: var(--font-display); font-size: 22px; line-height: 1.2; }
+.facts span { font-size: 13px; color: var(--muted); }
+
+/* sections */
+section { padding-block: 72px 8px; }
+.sec-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; max-width: 60ch; }
+.sec-head h2 { font-size: clamp(28px, 4.2vw, 42px); letter-spacing: -0.015em; }
+.sec-head p { color: var(--muted); }
+
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card h3 { font-size: 21px; }
+.card p { color: var(--muted); font-size: 15px; }
+.glyph { font-family: var(--font-mono); font-size: 13px; color: var(--accent); letter-spacing: .06em; }
+
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.about p + p { margin-top: 14px; }
+.about p { color: var(--muted); }
+.about p strong { color: var(--fg); font-weight: 600; }
+.timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); display: flex; flex-direction: column; gap: 22px; }
+.timeline li { padding-left: 20px; position: relative; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.timeline .when { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.timeline h3 { font-size: 18px; margin-top: 2px; }
+.timeline p { font-size: 15px; margin-top: 2px; }
+
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.chip { font-family: var(--font-mono); font-size: 12.5px; padding: 5px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+.chip.learning { border-style: dashed; color: var(--muted); }
+
+.projects { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; align-items: stretch; }
+.project.feature { padding: 32px; gap: 16px; }
+.project.feature h3 { font-size: 28px; }
+.project ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; display: grid; gap: 4px; }
+.roles { display: flex; gap: 8px; flex-wrap: wrap; }
+.roles span { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
+.stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; }
+.slot-col { display: grid; gap: 16px; grid-template-rows: 1fr 1fr; }
+.slot { border-style: dashed; background: transparent; justify-content: center; }
+.slot h3 { color: var(--muted); font-size: 18px; }
+
+.contact { background: var(--accent); color: var(--accent-fg); border-radius: 28px; padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center; }
+.contact h2 { font-size: clamp(28px, 4.4vw, 44px); }
+.contact p { margin-top: 12px; opacity: .88; max-width: 46ch; }
+.links { display: grid; gap: 10px; min-width: 0; }
+.link-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: color-mix(in srgb, var(--accent-fg) 14%, transparent); border-radius: 12px; padding: 12px 14px; min-width: 0; }
+.link-row .k { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .8; display: block; }
+.link-row .v { font-size: 15px; overflow-wrap: anywhere; }
+.link-row button { font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border: 0; border-radius: 8px; padding: 6px 12px; background: var(--accent-fg); color: var(--accent); flex-shrink: 0; }
+
+footer { padding-block: 40px 40px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+footer a { text-decoration: none; }
+
+@media (max-width: 860px) {
+  .hero, .about, .contact, .projects { grid-template-columns: 1fr; }
+  .cards, .skills { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .facts div:nth-child(2) { border-right: 0; }
+  .facts div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .portrait { aspect-ratio: 16 / 11; order: -1; }
+  .portrait { aspect-ratio: 4 / 4.2; max-height: 460px; }
+  .portrait img { object-position: 50% 30%; }
+  .hero { padding-block: 36px 40px; }
+  .slot-col { grid-template-rows: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn:hover { transform: none; }
+}
+</style>
+
+<style>:root{padding:0}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="#home" aria-label="Tilahun, home">
+      <span class="mark" aria-hidden="true">T</span>
+      <span>Tilahun Getie<small>Software · Ethiopia</small></span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero" id="home">
+    <div>
+      <p class="eyebrow">Fourth-year student · Ethiopia</p>
+      <h1>Building useful software for <span>real campus needs.</span></h1>
+      <p class="lead">I'm <strong>Tilahun Getie</strong>, a fourth-year student at Debre Markos University. I build desktop and web applications, from a banking system with an Amharic interface to an online voting system for student union elections.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="#contact">Let's connect</a>
+      </div>
+      <p class="status"><i aria-hidden="true"></i>Open to internships and collaboration</p>
+    </div>
+    <div class="portrait">
+      <img src="portrait.jpg" alt="Portrait of Tilahun Getie outdoors, wearing sunglasses and a white t-shirt" width="720" height="1280">
+      <div class="tag"><b>Building with</b>Python, Tkinter and Django</div>
+    </div>
+  </div>
+
+  <div class="facts" aria-label="Quick facts">
+    <div><b>Python</b><span>Main language</span></div>
+    <div><b>Django</b><span>Web projects</span></div>
+    <div><b>4th year</b><span>Debre Markos University</span></div>
+    <div><b>2028</b><span>Graduation year</span></div>
+  </div>
+
+  <section id="what">
+    <div class="sec-head">
+      <p class="eyebrow">What I do</p>
+      <h2>Practical by design. Built for the people who use it.</h2>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <span class="glyph">&lt;/&gt;</span>
+        <h3>Desktop applications</h3>
+        <p>Applications with a database and a friendly interface, built in Python with Tkinter and SQLite, including one fully in Amharic.</p>
+        <a href="#projects">View my projects</a>
+      </article>
+      <article class="card">
+        <span class="glyph">DB</span>
+        <h3>Data and records</h3>
+        <p>Designing the tables behind accounts, transactions, students and clinic visits, and turning them into clear reports.</p>
+        <a href="#skills">See my skills</a>
+      </article>
+      <article class="card">
+        <span class="glyph">WEB</span>
+        <h3>Web development</h3>
+        <p>Django applications with student registration, candidate management, secure online voting and published results.</p>
+        <a href="#about">About me</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="sec-head">
+      <p class="eyebrow">About</p>
+      <h2>A student who likes finishing things people can use.</h2>
+    </div>
+    <div class="about">
+      <div>
+        <p>I'm a fourth-year student at <strong>Debre Markos University</strong>, graduating in 2028. Most of my project time goes into software that solves a concrete problem for people around me.</p>
+        <p>I like building tools in the language people actually speak, which is why my banking system uses an <strong>Amharic-language interface</strong>. I also build for the web with <strong>Django</strong>, and I work with classmates on group academic and software projects.</p>
+        <p>I'm looking for internships where I can keep building real systems and learn from an engineering team.</p>
+      </div>
+      <ol class="timeline">
+        <li>
+          <span class="when">Web · Django</span>
+          <h3>DMU Election System</h3>
+          <p>Online student union elections for Debre Markos University.</p>
+        </li>
+        <li>
+          <span class="when">Desktop · Python</span>
+          <h3>AmharicBankingSystem</h3>
+          <p>Banking operations through an Amharic-language interface.</p>
+        </li>
+        <li>
+          <span class="when">Desktop · In progress</span>
+          <h3>University Clinic Management System</h3>
+          <p>Registration, visits, treatment and reports for the university clinic.</p>
+        </li>
+        <li>
+          <span class="when">Expected 2028</span>
+          <h3>Graduation</h3>
+          <p>Debre Markos University.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <p class="eyebrow">Skills</p>
+      <h2>The tools I build with.</h2>
+    </div>
+    <div class="skills">
+      <article class="card">
+        <h3>Languages</h3>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span></div>
+      </article>
+      <article class="card">
+        <h3>Frameworks and tools</h3>
+        <div class="chips"><span class="chip">Django</span><span class="chip">Tkinter</span><span class="chip">SQLite</span></div>
+      </article>
+      <article class="card">
+        <h3>What I build with them</h3>
+        <div class="chips"><span class="chip">Amharic-language interfaces</span><span class="chip">Account management</span><span class="chip">Online voting</span><span class="chip">Role-based access</span><span class="chip">Reports and export</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head">
+      <p class="eyebrow">Projects</p>
+      <h2>Selected work</h2>
+      <p>Two finished projects and one in progress. More on <a href="https://github.com/tilahungetie14-bot" target="_blank" rel="noopener">my GitHub</a>.</p>
+    </div>
+    <div class="projects">
+      <article class="card project feature">
+        <span class="glyph">DESKTOP APP · PYTHON</span>
+        <h3>AmharicBankingSystem</h3>
+        <p>A banking application that manages banking operations through an Amharic-language interface. It aims to make account management and banking transactions simple through a user-friendly interface.</p>
+        <ul>
+          <li>Amharic-language screens for everyday banking tasks</li>
+          <li>Account management</li>
+          <li>Banking transactions</li>
+          <li>SQLite for data storage</li>
+        </ul>
+        <div class="stack"><span class="chip">Python</span><span class="chip">Tkinter</span><span class="chip">SQLite</span></div>
+      </article>
+      <div class="slot-col">
+        <article class="card project">
+          <span class="glyph">WEB APP · DJANGO</span>
+          <h3>DMU Election System</h3>
+          <p>A web application that simplifies student union elections at Debre Markos University. It covers student registration, candidate management, secure online voting and election results.</p>
+          <div class="stack"><span class="chip">Python</span><span class="chip">Django</span></div>
+        </article>
+        <article class="card project">
+          <span class="glyph">DESKTOP APP · IN PROGRESS</span>
+          <h3>University Clinic Management System</h3>
+          <p>A desktop application for the university clinic with three user roles: Admin, Receptionist and Doctor or Nurse.</p>
+          <div class="stack"><span class="chip">Python</span><span class="chip">Tkinter</span><span class="chip">SQLite</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div>
+        <p class="eyebrow" style="color: inherit;">Have an idea?</p>
+        <h2 style="margin-top: 14px;">Let's make something useful.</h2>
+        <p>I'm interested in internships, feedback and thoughtful collaboration. Send me an email and I'll reply.</p>
+      </div>
+      <div class="links">
+        <div class="link-row"><div><span class="k">Email</span><span class="v" id="v-email">tilahungetie14@gmail.com</span></div><button type="button" data-copy="v-email">Copy</button></div>
+        <div class="link-row"><div><span class="k">GitHub</span><span class="v"><a id="v-gh" href="https://github.com/tilahungetie14-bot" target="_blank" rel="noopener">github.com/tilahungetie14-bot</a></span></div><button type="button" data-copy="v-gh">Copy</button></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© Tilahun Getie · Debre Markos, Ethiopia</span>
+    <a href="#home">Back to top ↑</a>
+  </footer>
+</main>
+
+<script>
+document.querySelectorAll('button[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.getAttribute('data-copy'));
+    var text = el.textContent;
+    function done() { var old = btn.textContent; btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = old; }, 1400); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+
+</body>
+</html>
