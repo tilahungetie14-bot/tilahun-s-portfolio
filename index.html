@@ -4,26 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Tilahun Getie, a Python and web development enthusiast building useful software projects.">
-  <title>Tilahun Getie | Developer Portfolio</title>
 
-  
+  <title>Tilahun Getie | Software Developer Portfolio</title>
+
+  <meta name="description"
+        content="Tilahun Getie's portfolio showcasing software development projects, Python, web development, and AI and machine learning interests.">
+
   <style>
     :root {
-      --bg: #0b1120;
-      --panel: #121c30;
-      --panel-light: #192740;
-      --text: #f1f5f9;
-      --muted: #a8b5c9;
-      --accent: #34d399;
-      --accent-dark: #064e3b;
-      --border: #293850;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -32,10 +33,10 @@
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.7;
+      color: var(--text);
+      background: var(--background);
     }
 
     a {
@@ -48,312 +49,381 @@
       margin: auto;
     }
 
+    /* Navigation */
     header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(11, 17, 32, 0.95);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
+      z-index: 1000;
     }
 
     nav {
-      min-height: 72px;
+      min-height: 75px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 20px;
+      padding: 15px 0;
     }
 
     .logo {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--primary);
+      white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
-      gap: 22px;
+      align-items: center;
+      justify-content: flex-end;
       flex-wrap: wrap;
+      gap: 18px;
     }
 
     .nav-links a {
-      color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      color: var(--accent);
+      color: var(--primary);
     }
 
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      color: var(--primary);
+      background: transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #eff6ff;
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      color: #ffffff;
+    }
+
+    .nav-cv {
+      background: var(--primary);
+      color: #ffffff !important;
+      padding: 8px 12px;
+      border-radius: 7px;
+    }
+
+    .nav-cv:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Hero */
     .hero {
-      min-height: 78vh;
+      padding: 85px 0;
+      background: linear-gradient(135deg, #eff6ff, #ffffff);
+    }
+
+    .hero-content {
       display: grid;
       grid-template-columns: 1.5fr 1fr;
       align-items: center;
-      gap: 50px;
-      padding-top: 65px;
-      padding-bottom: 65px;
+      gap: 55px;
     }
 
     .eyebrow {
-      color: var(--accent);
+      color: var(--primary);
       font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 0.85rem;
+      margin-bottom: 12px;
     }
 
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4.6rem);
-      line-height: 1.12;
-      margin: 15px 0 22px;
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
     }
 
-    h1 span {
-      color: var(--accent);
+    .hero h1 span {
+      color: var(--primary);
     }
 
-    .hero p,
-    .section-description {
+    .hero p {
       color: var(--muted);
+      font-size: 1.08rem;
       max-width: 650px;
+      margin-bottom: 25px;
     }
 
     .actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 28px;
+      gap: 12px;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 11px 19px;
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      font-weight: 700;
-      transition: 0.2s;
+    .hero-image {
+      display: flex;
+      justify-content: center;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: #06251b;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
-    }
-
-    .portrait-wrap {
-      max-width: 330px;
-      justify-self: center;
-      width: 100%;
-      padding: 10px;
-      border: 2px solid var(--accent);
-      border-radius: 24px;
-      transform: rotate(2deg);
-    }
-
-    .portrait-wrap img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 5;
+    .hero-image img {
+      width: min(320px, 100%);
+      aspect-ratio: 1;
       object-fit: cover;
-      border-radius: 16px;
-      transform: rotate(-2deg);
+      object-position: center;
+      border-radius: 50%;
+      border: 7px solid #ffffff;
+      box-shadow: 0 15px 45px rgba(15, 23, 42, 0.14);
     }
 
+    /* General sections */
     section {
-      padding: 85px 0;
+      padding: 75px 0;
     }
 
     .section-title {
-      font-size: clamp(2rem, 4vw, 2.7rem);
+      text-align: center;
+      font-size: 2rem;
       margin-bottom: 12px;
     }
 
-    .section-title span {
-      color: var(--accent);
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 40px;
     }
 
-    .section-description {
-      margin-bottom: 32px;
-    }
-
-    .about-card,
-    .skill-card,
-    .project-card,
-    .contact-card {
-      background: var(--panel);
+    /* About */
+    .about-card {
+      background: var(--surface);
+      padding: 30px;
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 25px;
+      box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
     }
 
     .about-card p {
       color: var(--muted);
+      margin-bottom: 15px;
     }
 
+    .about-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Skills */
     .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .skill-card {
-      text-align: center;
-      font-weight: 700;
-      transition: 0.2s;
-    }
-
-    .skill-card:hover,
-    .project-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-
-    .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      transition: 0.2s;
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 25px;
     }
 
-    .project-number {
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    .project-card h3 {
-      font-size: 1.3rem;
-      margin: 10px 0;
-    }
-
-    .project-card p {
-      color: var(--muted);
+    .skill-card h3 {
       margin-bottom: 15px;
-      flex: 1;
+      color: var(--primary);
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 20px;
     }
 
     .tag {
-      background: var(--panel-light);
+      background: #eff6ff;
+      color: #1e40af;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.88rem;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      background: var(--surface);
       border: 1px solid var(--border);
-      padding: 4px 9px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      color: #cbd5e1;
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .project-link {
-      color: var(--accent);
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .project-number {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
       font-weight: 700;
+      margin-bottom: 15px;
     }
 
-    .project-link:hover {
-      text-decoration: underline;
+    .project-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
     }
 
+    .project-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .project-card .tags {
+      margin-bottom: 20px;
+    }
+
+    .project-card .btn {
+      margin-top: auto;
+    }
+
+    /* Contact */
     .contact-card {
+      max-width: 750px;
+      margin: auto;
       text-align: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 35px;
     }
 
     .contact-card p {
       color: var(--muted);
-      margin: 10px 0;
+      margin-bottom: 20px;
     }
 
     .contact-links {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 22px;
+      justify-content: center;
+      gap: 12px;
     }
 
-    .contact-links a {
-      color: var(--accent);
-      overflow-wrap: anywhere;
-    }
-
+    /* Footer */
     footer {
-      border-top: 1px solid var(--border);
       padding: 25px 0;
-      color: var(--muted);
       text-align: center;
+      background: #0f172a;
+      color: #cbd5e1;
+    }
+
+    footer p {
       font-size: 0.9rem;
     }
 
-    @media (max-width: 800px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 35px;
-      }
-
-      .hero .actions {
-        justify-content: center;
-      }
-
-      .portrait-wrap {
-        max-width: 250px;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-description {
-        margin-bottom: 25px;
-      }
-    }
-
-    @media (max-width: 520px) {
+    /* Responsive layout */
+    @media (max-width: 850px) {
       nav {
-        padding: 14px 0;
         flex-direction: column;
       }
 
       .nav-links {
         justify-content: center;
-        gap: 12px;
       }
 
-      section {
-        padding: 60px 0;
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-image {
+        grid-row: 1;
+      }
+
+      .hero-image img {
+        width: 230px;
+      }
+
+      .actions {
+        justify-content: center;
       }
 
       .skills-grid {
-        gap: 10px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 92%;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+
+      .hero {
+        padding: 55px 0;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-card,
+      .project-card,
+      .contact-card {
+        padding: 22px;
+      }
+
+      .actions .btn {
+        width: 100%;
       }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Navigation -->
   <header>
-    <nav class="container" aria-label="Main navigation">
-      <a class="logo" href="#home">Tilahun</a>
+    <nav class="container">
+      <a href="#home" class="logo">Tilahun Getie</a>
 
       <div class="nav-links">
         <a href="#home">Home</a>
@@ -361,176 +431,287 @@
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
+
+        <a
+          class="nav-cv"
+          href="Tilahun_Getie_CV_.pdf"
+          download="Tilahun_Getie_CV_.pdf">
+          Download CV
+        </a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="container hero" id="home">
-      <div>
-        <div class="eyebrow">Welcome to my portfolio</div>
 
-        <h1>Hi, I'm <span>Tilahun Getie</span></h1>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container hero-content">
 
-        <p>
-          I am a software development enthusiast interested in Python,
-          web development, database systems, and building practical
-          technology solutions.
-        </p>
+        <div>
+          <div class="eyebrow">SOFTWARE DEVELOPER</div>
 
-        <div class="actions">
-          <a class="btn btn-primary" href="#projects">Explore My Projects</a>
-          <a class="btn" href="#contact">Contact Me</a>
+          <h1>
+            Hi, I'm <span>Tilahun Getie</span>
+          </h1>
+
+          <p>
+            I am a Software Engineering student at Debre Markos University
+            with an interest in Python, web development, and building
+            practical software solutions. I am also eager to learn more
+            about Artificial Intelligence and Machine Learning.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">
+              Explore My Projects
+            </a>
+
+            <a class="btn" href="#contact">
+              Contact Me
+            </a>
+
+            <a
+              class="btn"
+              href="Tilahun_Getie_CV_.pdf"
+              download="Tilahun_Getie_CV_.pdf">
+              Download CV ↓
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div class="portrait-wrap">
-        <img src="portrait.jpg" alt="Tilahun Getie" class="profile-photo">
+        <div class="hero-image">
+          <img
+            src="portrait.jpg"
+            alt="Portrait of Tilahun Getie"
+            onerror="this.style.display='none'">
+        </div>
+
       </div>
     </section>
 
+    <!-- About Section -->
     <section id="about">
       <div class="container">
-        <h2 class="section-title">About <span>Me</span></h2>
-        <p class="section-description">
-          A little introduction about who I am and what I build.
+        <h2 class="section-title">About Me</h2>
+
+        <p class="section-subtitle">
+          A software engineering student passionate about technology
+          and continuous learning.
         </p>
 
         <div class="about-card">
           <p>
-            I enjoy learning software development by building real projects.
-            My work includes banking applications, university election
-            systems, and management systems. I continue to improve my
-            programming, problem-solving, and web development skills.
+            My name is Tilahun Getie. I am studying Software Engineering
+            at Debre Markos University in Ethiopia, with an expected
+            graduation year of 2028.
+          </p>
+
+          <p>
+            I enjoy developing software projects that solve practical
+            problems. My interests include Python programming, web
+            application development, database management, and software
+            engineering.
+          </p>
+
+          <p>
+            I have also completed online courses and training related
+            to Artificial Intelligence. In the future, I want to deepen
+            my knowledge of AI and Machine Learning and use these
+            technologies to develop useful solutions.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- Skills Section -->
     <section id="skills">
       <div class="container">
-        <h2 class="section-title">My <span>Skills</span></h2>
-        <p class="section-description">
-          Technologies I use or am learning. You can update this list
-          to match your actual experience.
+        <h2 class="section-title">Technical Skills</h2>
+
+        <p class="section-subtitle">
+          Technologies and tools I have learned or worked with in my projects.
         </p>
 
         <div class="skills-grid">
-          <div class="skill-card">Python</div>
-          <div class="skill-card">Django</div>
-          <div class="skill-card">HTML</div>
-          <div class="skill-card">CSS</div>
-          <div class="skill-card">JavaScript</div>
-          <div class="skill-card">SQLite</div>
-          <div class="skill-card">Git</div>
-          <div class="skill-card">GitHub</div>
+
+          <div class="skill-card">
+            <h3>Programming Languages</h3>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">C</span>
+              <span class="tag">C++</span>
+              <span class="tag">C#</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">PHP</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Web Development</h3>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Django</span>
+              <span class="tag">Flask</span>
+              <span class="tag">Responsive Design</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Databases</h3>
+            <div class="tags">
+              <span class="tag">SQLite</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Database Design</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Tools</h3>
+            <div class="tags">
+              <span class="tag">Git</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">VS Code</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Areas of Interest</h3>
+            <div class="tags">
+              <span class="tag">Artificial Intelligence</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Automation</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Professional Skills</h3>
+            <div class="tags">
+              <span class="tag">Problem Solving</span>
+              <span class="tag">Teamwork</span>
+              <span class="tag">Continuous Learning</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects">
       <div class="container">
-        <h2 class="section-title">Featured <span>Projects</span></h2>
-        <p class="section-description">
-          A selection of software projects I have worked on.
+        <h2 class="section-title">My Projects</h2>
+
+        <p class="section-subtitle">
+          Some of the software projects I have developed and worked on.
         </p>
 
         <div class="projects-grid">
+
           <article class="project-card">
-            <div class="project-number">PROJECT 01</div>
+            <span class="project-number">Project 01</span>
+
             <h3>DMU Election System</h3>
+
             <p>
-              A university election system project designed to support
-              digital election processes and election management.
+              A web-based election management project designed to support
+              the organization and management of elections at Debre Markos
+              University.
             </p>
 
             <div class="tags">
-              <span class="tag">Web Development</span>
-              <span class="tag">Election System</span>
+              <span class="tag">Python</span>
+              <span class="tag">Django</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
             </div>
 
             <a
-              class="project-link"
+              class="btn"
               href="https://github.com/tilahungetie14-bot/DMU-Election-System"
               target="_blank"
-              rel="noopener noreferrer"
-            >View on GitHub ↗</a>
+              rel="noopener noreferrer">
+              View on GitHub ↗
+            </a>
           </article>
 
           <article class="project-card">
-            <div class="project-number">PROJECT 02</div>
-            <h3>Amharic Banking System</h3>
+            <span class="project-number">Project 02</span>
+
+            <h3>Amharic Voice Banking System</h3>
+
             <p>
-              A banking application project featuring Amharic voice
-              interaction, customer transactions, and account management.
+              A Python-based banking application that explores Amharic
+              voice interaction and banking operations, including account
+              management, balance checking, and transaction history.
             </p>
 
             <div class="tags">
               <span class="tag">Python</span>
               <span class="tag">SQLite</span>
-              <span class="tag">Voice</span>
+              <span class="tag">Flask</span>
+              <span class="tag">gTTS</span>
             </div>
 
             <a
-              class="project-link"
+              class="btn"
               href="https://github.com/tilahungetie14-bot"
               target="_blank"
-              rel="noopener noreferrer"
-            >Find repository on GitHub ↗</a>
+              rel="noopener noreferrer">
+              View GitHub Profile ↗
+            </a>
           </article>
 
-          <article class="project-card">
-            <div class="project-number">PROJECT 03</div>
-            <h3>Clinic Management System</h3>
-            <p>
-              A management system concept for organizing patient
-              registration, clinic records, costs, and reports.
-            </p>
-
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">SQLite</span>
-              <span class="tag">Management</span>
-            </div>
-
-            <a
-              class="project-link"
-              href="https://github.com/tilahungetie14-bot"
-              target="_blank"
-              rel="noopener noreferrer"
-            >Find repository on GitHub ↗</a>
-          </article>
         </div>
       </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
       <div class="container">
-        <h2 class="section-title">Get in <span>Touch</span></h2>
+        <h2 class="section-title">Contact Me</h2>
+
+        <p class="section-subtitle">
+          Feel free to contact me about software development,
+          collaboration, or learning opportunities.
+        </p>
 
         <div class="contact-card">
           <p>
-            Have a question or an idea for a project?
-            Feel free to contact me.
+            I am interested in connecting with people who share a passion
+            for technology, software development, and innovation.
           </p>
 
           <div class="contact-links">
-            <a href="mailto:tilahungetie14@gmail.com">Email Me</a>
+
             <a
+              class="btn btn-primary"
+              href="mailto:tilahungetie14@gmail.com">
+              Email Me
+            </a>
+
+            <a
+              class="btn"
               href="https://github.com/tilahungetie14-bot"
               target="_blank"
-              rel="noopener noreferrer"
-            >GitHub Profile</a>
+              rel="noopener noreferrer">
+              GitHub Profile ↗
+            </a>
+
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>
-        © <span id="year"></span> Tilahun Getie. Built with HTML and CSS.
+        &copy; <span id="year"></span> Tilahun Getie.
+        All rights reserved.
       </p>
     </div>
   </footer>
@@ -539,5 +720,6 @@
     document.getElementById("year").textContent =
       new Date().getFullYear();
   </script>
+
 </body>
 </html>
