@@ -2,1161 +2,1048 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Tilahun Getie | Software Developer</title>
-  <meta name="description" content="Explore the portfolio of Tilahun Getie, a Software Engineering student interested in Python, web development, AI, and Machine Learning.">
-  <meta name="theme-color" content="#0b1120">
-
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --dark: #0b1120;
-      --dark-card: #111b2e;
-      --primary: #60a5fa;
-      --primary-dark: #2563eb;
-      --text: #172033;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --radius: 18px;
-      --shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 85px;
-    }
-
-    body {
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.7;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid #93c5fd;
-      outline-offset: 4px;
-    }
-
-    .container {
-      width: min(1120px, 90%);
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 95px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .section-label {
-      display: inline-block;
-      color: var(--primary-dark);
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(1.9rem, 4vw, 2.7rem);
-      line-height: 1.2;
-      letter-spacing: -1px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      max-width: 650px;
-      margin: 15px auto 0;
-    }
-
-    /* Navigation */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(11, 17, 32, 0.95);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .navbar {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 22px;
-    }
-
-    .brand {
-      color: #ffffff;
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      white-space: nowrap;
-    }
-
-    .brand span {
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: #cbd5e1;
-      font-size: 0.91rem;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .nav-links .nav-download {
-      padding: 9px 15px;
-      background: var(--primary);
-      color: var(--dark);
-      border-radius: 9px;
-      font-weight: 800;
-    }
-
-    .nav-links .nav-download:hover {
-      background: #93c5fd;
-      color: var(--dark);
-    }
-
-    /* Hero */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      color: #ffffff;
-      background:
-        radial-gradient(ellipse at 80% 15%, rgba(37, 99, 235, 0.24), transparent 38%),
-        radial-gradient(ellipse at 10% 90%, rgba(96, 165, 250, 0.12), transparent 35%),
-        var(--dark);
-      padding: 100px 0 110px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 0.8fr;
-      align-items: center;
-      gap: 70px;
-    }
-
-    .availability {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      background: rgba(255, 255, 255, 0.04);
-      color: #cbd5e1;
-      border-radius: 999px;
-      padding: 7px 13px;
-      font-size: 0.84rem;
-      margin-bottom: 25px;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 12px rgba(74, 222, 128, 0.55);
-    }
-
-    .hero h1 {
-      font-size: clamp(2.7rem, 6vw, 4.7rem);
-      letter-spacing: -2.5px;
-      line-height: 1.1;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-    .hero h2 {
-      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
-      color: #cbd5e1;
-      font-weight: 500;
-      margin-bottom: 17px;
-    }
-
-    .hero-description {
-      max-width: 610px;
-      color: #a8b6cc;
-      font-size: 1.04rem;
-      margin-bottom: 30px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 9px;
-      padding: 12px 20px;
-      border: 1px solid transparent;
-      border-radius: 10px;
-      font: inherit;
-      font-size: 0.93rem;
-      font-weight: 750;
-      transition: transform 0.2s, background 0.2s, border-color 0.2s;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #0b1120;
-    }
-
-    .btn-primary:hover {
-      background: #93c5fd;
-    }
-
-    .btn-outline {
-      color: #ffffff;
-      border-color: #334155;
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary);
-      background: rgba(96, 165, 250, 0.08);
-    }
-
-    .hero-image-wrap {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-
-    .photo-frame {
-      position: relative;
-      width: min(330px, 100%);
-      padding: 9px;
-      border-radius: 30px;
-      border: 1px solid rgba(96, 165, 250, 0.4);
-      background: linear-gradient(145deg, #1e3a8a, #172033 65%);
-      box-shadow: 0 25px 75px rgba(0, 0, 0, 0.35);
-      transform: rotate(2deg);
-    }
-
-    .photo-frame img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 22px;
-      background: #1e293b;
-    }
-
-    .photo-caption {
-      position: absolute;
-      bottom: 25px;
-      left: -25px;
-      background: #ffffff;
-      color: var(--text);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: 12px;
-      padding: 12px 17px;
-      transform: rotate(-2deg);
-    }
-
-    .photo-caption strong {
-      display: block;
-      font-size: 0.95rem;
-    }
-
-    .photo-caption span {
-      color: var(--muted);
-      font-size: 0.8rem;
-    }
-
-    /* About */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .about-highlight,
-    .about-details {
-      padding: 32px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-      box-shadow: var(--shadow);
-    }
-
-    .about-highlight {
-      background: var(--dark);
-      color: #ffffff;
-    }
-
-    .about-highlight h3 {
-      font-size: 1.5rem;
-      line-height: 1.35;
-      margin-bottom: 15px;
-    }
-
-    .about-highlight p {
-      color: #a8b6cc;
-    }
-
-    .about-details p {
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .about-details p:last-child {
-      margin-bottom: 0;
-    }
-
-    .interest-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 22px;
-    }
-
-    .interest-tags span {
-      background: #eff6ff;
-      color: #1d4ed8;
-      border: 1px solid #dbeafe;
-      padding: 6px 11px;
-      border-radius: 8px;
-      font-size: 0.84rem;
-      font-weight: 650;
-    }
-
-    /* Skills */
-
-    .skills-section {
-      background: #eef3f9;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .skill-card {
-      background: #ffffff;
-      padding: 27px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .skill-icon {
-      display: grid;
-      place-items: center;
-      width: 46px;
-      height: 46px;
-      background: #dbeafe;
-      color: #1d4ed8;
-      border-radius: 12px;
-      font-size: 1.3rem;
-      font-weight: 800;
-      margin-bottom: 18px;
-    }
-
-    .skill-card h3 {
-      margin-bottom: 15px;
-      font-size: 1.08rem;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      padding: 6px 10px;
-      background: #f1f5f9;
-      color: #475569;
-      border-radius: 7px;
-      font-size: 0.83rem;
-    }
-
-    /* Projects */
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
-    }
-
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 31px;
-      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.025);
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-      border-color: #bfdbfe;
-    }
-
-    .project-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      width: 100%;
-      margin-bottom: 22px;
-    }
-
-    .project-icon {
-      display: grid;
-      place-items: center;
-      width: 53px;
-      height: 53px;
-      border-radius: 14px;
-      background: #dbeafe;
-      color: #1d4ed8;
-      font-size: 1.45rem;
-      font-weight: 800;
-    }
-
-    .project-label {
-      color: #64748b;
-      font-size: 0.78rem;
-      font-weight: 750;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .project-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 12px;
-    }
-
-    .project-card p {
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    .project-card .tags {
-      margin-bottom: 25px;
-    }
-
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: auto;
-    }
-
-    .project-links .btn {
-      font-size: 0.86rem;
-      padding: 10px 14px;
-    }
-
-    .project-links .btn-light {
-      background: #f1f5f9;
-      color: #334155;
-    }
-
-    .project-links .btn-light:hover {
-      background: #dbeafe;
-    }
-
-    /* Learning */
-
-    .learning-panel {
-      padding: 38px;
-      background: var(--dark);
-      border-radius: 22px;
-      color: #ffffff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .learning-panel h2 {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      margin-bottom: 12px;
-    }
-
-    .learning-panel p {
-      max-width: 680px;
-      color: #a8b6cc;
-    }
-
-    .learning-panel .btn {
-      flex-shrink: 0;
-    }
-
-    /* Contact */
-
-    .contact-section {
-      background: #eef3f9;
-    }
-
-    .contact-card {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 42px;
-      text-align: center;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .contact-card h3 {
-      font-size: 1.55rem;
-      margin-bottom: 12px;
-    }
-
-    .contact-card > p {
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto 25px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .contact-links .btn-secondary {
-      background: #f1f5f9;
-      color: #334155;
-    }
-
-    .contact-links .btn-secondary:hover {
-      background: #dbeafe;
-    }
-
-    /* Footer */
-
-    .footer {
-      background: var(--dark);
-      color: #94a3b8;
-      padding: 28px 0;
-    }
-
-    .footer-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    .footer strong {
-      color: #ffffff;
-    }
-
-    .back-to-top {
-      color: var(--primary);
-      font-weight: 700;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 900px) {
-      .navbar {
-        padding: 15px 0;
-        flex-direction: column;
-      }
-
-      .nav-links {
-        justify-content: center;
-        gap: 15px;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 55px;
-        text-align: center;
-      }
-
-      .hero-description {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-actions {
-        justify-content: center;
-      }
-
-      .hero-image-wrap {
-        grid-row: 1;
-      }
-
-      .photo-frame {
-        width: 255px;
-      }
-
-      .photo-caption {
-        left: -20px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .learning-panel {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        width: 91%;
-      }
-
-      .section {
-        padding: 68px 0;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
-
-      .nav-links a {
-        font-size: 0.82rem;
-      }
-
-      .hero {
-        padding: 65px 0 75px;
-      }
-
-      .hero h1 {
-        letter-spacing: -1.5px;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-      }
-
-      .photo-frame {
-        width: 220px;
-      }
-
-      .photo-caption {
-        left: -15px;
-        bottom: 17px;
-      }
-
-      .skills-grid,
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-highlight,
-      .about-details,
-      .skill-card,
-      .project-card,
-      .learning-panel,
-      .contact-card {
-        padding: 24px;
-      }
-
-      .project-links {
-        width: 100%;
-      }
-
-      .project-links .btn {
-        flex: 1;
-      }
-
-      .contact-links {
-        flex-direction: column;
-      }
-
-      .contact-links .btn {
-        width: 100%;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *, *::before, *::after {
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tilahun Getie's Software Engineering portfolio, projects, skills, and certificates.">
+
+    <title>Tilahun Getie | Software Engineering Portfolio</title>
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #163b68;
+            --dark: #0b1220;
+            --text: #263449;
+            --muted: #64748b;
+            --light: #f4f7fc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: auto;
+        }
+
+        /* Navigation */
+
+        header {
+            background: var(--dark);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        nav {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 1px solid #475569;
+            color: white;
+            background: transparent;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* Buttons */
+
+        .btn {
+            display: inline-block;
+            padding: 11px 21px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.93rem;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #93c5fd;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero */
+
+        .hero {
+            background:
+                radial-gradient(circle at 85% 20%, #1e3a8a 0, transparent 32%),
+                linear-gradient(135deg, #0b1220, #142d50);
+            color: white;
+            padding: 85px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.5fr 0.8fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .hero-label {
+            color: #93c5fd;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 5vw, 3.7rem);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #60a5fa;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: #dbeafe;
+            margin-bottom: 26px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .profile-photo {
+            width: 270px;
+            height: 300px;
+            object-fit: cover;
+            object-position: center;
+            margin: auto;
+            border: 4px solid rgba(147, 197, 253, 0.7);
+            border-radius: 22px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* General Sections */
+
+        section {
+            padding: 75px 0;
+            scroll-margin-top: 85px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* About */
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: var(--muted);
+        }
+
+        .about-highlight {
+            margin-top: 25px;
+            padding: 20px;
+            border-left: 4px solid var(--primary);
+            background: var(--light);
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        /* Skills */
+
+        .skills-section {
+            background: var(--light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            padding: 23px 15px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* Projects */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: white;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.09);
+        }
+
+        .project-icon {
+            font-size: 2.3rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            padding: 5px 10px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border-radius: 20px;
+            font-size: 0.78rem;
+        }
+
+        .project-link {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Certificates */
+
+        .certificates-section {
+            background: var(--light);
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .certificate-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 28px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .certificate-icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: #dbeafe;
+            font-size: 1.9rem;
+            margin-bottom: 18px;
+        }
+
+        .certificate-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.15rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .certificate-card p {
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .certificate-date {
+            color: var(--primary) !important;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .certificate-type {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 5px 11px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Learning */
+
+        .learning-card {
+            max-width: 850px;
+            margin: auto;
+            padding: 32px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #eff6ff, #f8fafc);
+            border: 1px solid #dbeafe;
+            text-align: center;
+        }
+
+        .learning-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .learning-card p {
+            color: var(--muted);
+        }
+
+        /* Contact */
+
+        .contact-section {
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact-section .section-heading h2 {
+            color: white;
+        }
+
+        .contact-section .section-heading p {
+            color: #cbd5e1;
+        }
+
+        .contact-content {
+            max-width: 650px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            color: #cbd5e1;
+            margin-bottom: 22px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .contact-links a {
+            display: inline-block;
+            padding: 10px 15px;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            color: white;
+            transition: background 0.2s;
+        }
+
+        .contact-links a:hover {
+            background: #1e3a5f;
+        }
+
+        /* Footer */
+
+        footer {
+            padding: 22px 0;
+            background: #060b14;
+            color: #94a3b8;
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 0.82rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                min-height: 68px;
+                flex-wrap: wrap;
+                padding: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                padding: 12px 0;
+                gap: 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px 5px;
+                font-size: 0.95rem;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .profile-photo {
+                width: 220px;
+                height: 250px;
+                grid-row: 1;
+            }
+
+            section {
+                padding: 55px 0;
+            }
+
+            .projects-grid,
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .skill-card {
+                padding: 18px 8px;
+            }
+
+            .project-card,
+            .certificate-card {
+                padding: 22px;
+            }
+
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- Navigation -->
-  <header class="site-header">
-    <nav class="navbar container" aria-label="Main navigation">
-      <a class="brand" href="#home">Tilahun<span>.</span></a>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <a class="logo" href="#home">Tilahun<span>.</span></a>
 
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks">
+                ☰
+            </button>
 
-        <a
-          class="nav-download"
-          href="Tilahun_Getie_CV_Updated_Certificates.pdf"
-          download="Tilahun_Getie_CV_Updated_Certificates.pdf">
-          Download CV ↓
-        </a>
-      </div>
-    </nav>
-  </header>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#certificates">Certificates</a>
+                <a href="#contact">Contact</a>
 
-  <main>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-
-        <div class="hero-content">
-          <div class="availability">
-            <span class="status-dot"></span>
-            Software Engineering Student
-          </div>
-
-          <h1>
-            Hi, I'm<br>
-            <span>Tilahun Getie.</span>
-          </h1>
-
-          <h2>Software Developer | Python & Web Development</h2>
-
-          <p class="hero-description">
-            I build practical software solutions and web applications.
-            I am passionate about technology, continuous learning,
-            and exploring Artificial Intelligence and Machine Learning.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">
-              Explore My Projects ↗
-            </a>
-
-            <a class="btn btn-outline" href="#contact">
-              Contact Me
-            </a>
-
-            <a
-              class="btn btn-outline"
-              href="Tilahun_Getie_CV_Updated_Certificates.pdf"
-              download="Tilahun_Getie_CV_Updated_Certificates.pdf">
-              Download CV ↓
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-image-wrap">
-          <div class="photo-frame">
-            <img
-              src="portrait.jpg"
-              alt="Portrait of Tilahun Getie"
-              width="330"
-              height="413">
-
-            <div class="photo-caption">
-              <strong>Tilahun Getie</strong>
-              <span>Future-focused developer</span>
+                <!-- Updated CV filename -->
+                <a href="Tilahun_Getie_CV_.pdf" download>
+                    Download CV
+                </a>
             </div>
-          </div>
-        </div>
+        </nav>
+    </header>
 
-      </div>
-    </section>
+    <main>
 
-    <!-- About -->
-    <section class="section" id="about">
-      <div class="container">
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="container hero-content">
 
-        <div class="section-heading">
-          <span class="section-label">Get to know me</span>
-          <h2>About Me</h2>
-          <p>
-            A Software Engineering student interested in building useful
-            technology and growing as a developer.
-          </p>
-        </div>
+                <div>
+                    <div class="hero-label">Software Engineering Student</div>
 
-        <div class="about-grid">
-          <div class="about-highlight">
-            <h3>Learning today. Building for tomorrow.</h3>
+                    <h1>
+                        Hello, I'm <span>Tilahun Getie</span>
+                    </h1>
+
+                    <p>
+                        I am a Software Engineering student at Debre Markos
+                        University who enjoys building practical software
+                        solutions. I am interested in web development,
+                        Python programming, Artificial Intelligence,
+                        and Machine Learning.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a class="btn btn-primary" href="#projects">
+                            Explore My Projects
+                        </a>
+
+                        <a class="btn btn-outline"
+                           href="Tilahun_Getie_CV_.pdf"
+                           download>
+                            Download My CV
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <img
+                        src="portrait.jpg"
+                        alt="Portrait of Tilahun Getie"
+                        class="profile-photo">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>About Me</h2>
+                    <p>Get to know me and my professional interests.</p>
+                </div>
+
+                <div class="about-content">
+                    <p>
+                        My name is Tilahun Getie, and I am a Software
+                        Engineering student at Debre Markos University,
+                        with expected graduation in 2028.
+                    </p>
+
+                    <p>
+                        I enjoy learning programming technologies and
+                        developing applications that solve real-world
+                        problems. My experience includes working on
+                        web applications, database systems, and
+                        Python-based projects.
+                    </p>
+
+                    <p>
+                        I am also interested in expanding my knowledge
+                        of Artificial Intelligence and Machine Learning
+                        through courses, personal projects, and continuous
+                        learning.
+                    </p>
+
+                    <div class="about-highlight">
+                        <strong>My goal:</strong>
+                        To become a skilled software engineer and continue
+                        developing useful, secure, and innovative
+                        technology solutions.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="skills-section" id="skills">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>My Skills</h2>
+                    <p>
+                        Technologies and tools I have been learning
+                        and using in my projects.
+                    </p>
+                </div>
+
+                <div class="skills-grid">
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🐍</div>
+                        <h3>Python</h3>
+                        <p>Programming and application development</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🌐</div>
+                        <h3>HTML & CSS</h3>
+                        <p>Web page structure and design</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">⚙️</div>
+                        <h3>Django & Flask</h3>
+                        <p>Python web development frameworks</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🗄️</div>
+                        <h3>Databases</h3>
+                        <p>SQLite and database fundamentals</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🔧</div>
+                        <h3>Git & GitHub</h3>
+                        <p>Version control and project hosting</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">☕</div>
+                        <h3>Java</h3>
+                        <p>Programming and software fundamentals</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🤖</div>
+                        <h3>Artificial Intelligence</h3>
+                        <p>AI fundamentals and ongoing learning</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🧠</div>
+                        <h3>Machine Learning</h3>
+                        <p>Developing knowledge and practical skills</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>My Projects</h2>
+                    <p>
+                        Some of the software projects I have worked on.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+
+                    <article class="project-card">
+                        <div class="project-icon">🗳️</div>
+
+                        <h3>DMU Election System</h3>
+
+                        <p>
+                            A university election management project
+                            designed to support election-related
+                            processes and improve the organization
+                            of voting activities.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">Web Development</span>
+                        </div>
+
+                        <a
+                            class="project-link"
+                            href="https://github.com/tilahungetie14-bot/DMU-Election-System"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            View on GitHub →
+                        </a>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-icon">🏦</div>
+
+                        <h3>Amharic Voice Banking System</h3>
+
+                        <p>
+                            A Python-based banking application that
+                            incorporates Amharic voice interaction,
+                            customer account operations, transaction
+                            history, and database management.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">SQLite</span>
+                            <span class="tag">Flask</span>
+                            <span class="tag">gTTS</span>
+                        </div>
+
+                        <a
+                            class="project-link"
+                            href="https://github.com/tilahungetie14-bot"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Visit My GitHub →
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates -->
+        <section class="certificates-section" id="certificates">
+            <div class="container">
+
+                <div class="section-heading">
+                    <h2>My Certificates</h2>
+                    <p>
+                        Courses and learning achievements that support
+                        my professional development.
+                    </p>
+                </div>
+
+                <div class="certificate-grid">
+
+                    <article class="certificate-card">
+                        <div class="certificate-icon">🤖</div>
+
+                        <h3>AI Fundamentals Nanodegree Program</h3>
+
+                        <p>
+                            <strong>Organization:</strong> Udacity
+                        </p>
+
+                        <p>
+                            Completed the AI Fundamentals Nanodegree
+                            Program, strengthening my understanding
+                            of Artificial Intelligence.
+                        </p>
+
+                        <p class="certificate-date">
+                            Awarded: February 23, 2026
+                        </p>
+
+                        <span class="certificate-type">
+                            Artificial Intelligence
+                        </span>
+                    </article>
+
+                    <article class="certificate-card">
+                        <div class="certificate-icon">🎯</div>
+
+                        <h3>Set Goals to Manage Your Time</h3>
+
+                        <p>
+                            <strong>Organization:</strong> e-SHE
+                        </p>
+
+                        <p>
+                            <strong>Course Code:</strong> CE104
+                        </p>
+
+                        <p>
+                            Completed a course focused on setting
+                            goals and managing time effectively for
+                            personal and academic development.
+                        </p>
+
+                        <p class="certificate-date">
+                            Issued: March 4, 2025
+                        </p>
+
+                        <span class="certificate-type">
+                            Personal Development
+                        </span>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Journey -->
+        <section id="learning">
+            <div class="container">
+
+                <div class="section-heading">
+                    <h2>My Learning Journey</h2>
+                    <p>
+                        I believe in continuous learning and
+                        improving my technical skills.
+                    </p>
+                </div>
+
+                <div class="learning-card">
+                    <h3>Exploring AI and Machine Learning</h3>
+
+                    <p>
+                        I have taken AI-related courses through
+                        EthioCoder, classroom training, and
+                        e-learning. I want to continue learning
+                        Artificial Intelligence and Machine Learning
+                        and apply my knowledge to practical projects.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+
+                <div class="section-heading">
+                    <h2>Contact Me</h2>
+                    <p>
+                        Feel free to connect with me about software
+                        development, learning, and collaboration.
+                    </p>
+                </div>
+
+                <div class="contact-content">
+                    <p>
+                        I welcome opportunities to learn, collaborate,
+                        and build useful technology projects.
+                    </p>
+
+                    <div class="contact-links">
+
+                        <a href="mailto:tilahungetie14@gmail.com">
+                            ✉ Email Me
+                        </a>
+
+                        <a
+                            href="https://github.com/tilahungetie14-bot"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+
+                        <!-- Updated CV filename -->
+                        <a href="Tilahun_Getie_CV_.pdf" download>
+                            Download CV
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
             <p>
-              I believe that every project is an opportunity to learn,
-              solve problems, and improve my technical skills.
+                &copy; <span id="currentYear"></span>
+                Tilahun Getie. All rights reserved.
             </p>
-
-            <div class="interest-tags">
-              <span>Problem Solving</span>
-              <span>Innovation</span>
-              <span>Continuous Learning</span>
-            </div>
-          </div>
-
-          <div class="about-details">
-            <p>
-              My name is Tilahun Getie, and I am studying Software
-              Engineering at Debre Markos University in Ethiopia.
-              My expected graduation year is 2028.
-            </p>
-
-            <p>
-              I have worked on projects involving Python, web development,
-              databases, and voice-enabled applications. I enjoy turning
-              ideas into practical software projects.
-            </p>
-
-            <p>
-              I have also taken AI-related training and want to deepen
-              my knowledge of Artificial Intelligence and Machine Learning
-              as I continue my software development journey.
-            </p>
-          </div>
         </div>
+    </footer>
 
-      </div>
-    </section>
+    <script>
+        // Mobile navigation menu
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
 
-    <!-- Skills -->
-    <section class="section skills-section" id="skills">
-      <div class="container">
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
 
-        <div class="section-heading">
-          <span class="section-label">What I work with</span>
-          <h2>Technical Skills</h2>
-          <p>
-            Programming languages, frameworks, and tools I have learned
-            or used in my development projects.
-          </p>
-        </div>
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
 
-        <div class="skills-grid">
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
 
-          <article class="skill-card">
-            <div class="skill-icon">01</div>
-            <h3>Programming</h3>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">C</span>
-              <span class="tag">C++</span>
-              <span class="tag">C#</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">PHP</span>
-            </div>
-          </article>
+        // Close menu after selecting a link
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation menu"
+                );
+                menuToggle.textContent = "☰";
+            });
+        });
 
-          <article class="skill-card">
-            <div class="skill-icon">02</div>
-            <h3>Web Development</h3>
-            <div class="tags">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">Django</span>
-              <span class="tag">Flask</span>
-            </div>
-          </article>
-
-          <article class="skill-card">
-            <div class="skill-icon">03</div>
-            <h3>Databases</h3>
-            <div class="tags">
-              <span class="tag">SQLite</span>
-              <span class="tag">MySQL</span>
-              <span class="tag">Data Modeling</span>
-            </div>
-          </article>
-
-          <article class="skill-card">
-            <div class="skill-icon">04</div>
-            <h3>Development Tools</h3>
-            <div class="tags">
-              <span class="tag">Git</span>
-              <span class="tag">GitHub</span>
-              <span class="tag">VS Code</span>
-            </div>
-          </article>
-
-          <article class="skill-card">
-            <div class="skill-icon">05</div>
-            <h3>AI & Machine Learning</h3>
-            <div class="tags">
-              <span class="tag">AI Fundamentals</span>
-              <span class="tag">Machine Learning</span>
-              <span class="tag">Continuous Learning</span>
-            </div>
-          </article>
-
-          <article class="skill-card">
-            <div class="skill-icon">06</div>
-            <h3>Core Skills</h3>
-            <div class="tags">
-              <span class="tag">Problem Solving</span>
-              <span class="tag">Debugging</span>
-              <span class="tag">Teamwork</span>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section class="section" id="projects">
-      <div class="container">
-
-        <div class="section-heading">
-          <span class="section-label">What I've built</span>
-          <h2>Featured Projects</h2>
-          <p>
-            Practical projects that reflect my learning and interest
-            in solving problems with software.
-          </p>
-        </div>
-
-        <div class="projects-grid">
-
-          <article class="project-card">
-            <div class="project-top">
-              <div class="project-icon">01</div>
-              <span class="project-label">Web Application</span>
-            </div>
-
-            <h3>DMU Election System</h3>
-
-            <p>
-              A web-based election management project designed to support
-              the organization of university elections. The project
-              demonstrates my work with web development and application
-              design.
-            </p>
-
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Django</span>
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-            </div>
-
-            <div class="project-links">
-              <a
-                class="btn btn-primary"
-                href="https://github.com/tilahungetie14-bot/DMU-Election-System"
-                target="_blank"
-                rel="noopener noreferrer">
-                View Source ↗
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-top">
-              <div class="project-icon">02</div>
-              <span class="project-label">Desktop Application</span>
-            </div>
-
-            <h3>Amharic Voice Banking System</h3>
-
-            <p>
-              A banking application project exploring Amharic voice
-              interaction, customer account operations, balance checking,
-              transaction history, and database integration.
-            </p>
-
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">SQLite</span>
-              <span class="tag">Flask</span>
-              <span class="tag">gTTS</span>
-            </div>
-
-            <div class="project-links">
-              <a
-                class="btn btn-primary"
-                href="https://github.com/tilahungetie14-bot"
-                target="_blank"
-                rel="noopener noreferrer">
-                GitHub Profile ↗
-              </a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Future Learning -->
-    <section class="section">
-      <div class="container">
-        <div class="learning-panel">
-          <div>
-            <span class="section-label">What's next</span>
-            <h2>Always Learning. Always Building.</h2>
-            <p>
-              I am interested in expanding my knowledge of Artificial
-              Intelligence, Machine Learning, and modern software
-              development while building practical projects.
-            </p>
-          </div>
-
-          <a
-            class="btn btn-primary"
-            href="https://github.com/tilahungetie14-bot"
-            target="_blank"
-            rel="noopener noreferrer">
-            Explore My GitHub ↗
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section contact-section" id="contact">
-      <div class="container">
-
-        <div class="section-heading">
-          <span class="section-label">Let's connect</span>
-          <h2>Get In Touch</h2>
-          <p>
-            Have a project idea, collaboration opportunity, or a reason
-            to connect? Feel free to reach out.
-          </p>
-        </div>
-
-        <div class="contact-card">
-          <h3>Let's build something meaningful.</h3>
-
-          <p>
-            I welcome opportunities to learn, collaborate, and contribute
-            to software development projects.
-          </p>
-
-          <div class="contact-links">
-            <a
-              class="btn btn-primary"
-              href="mailto:tilahungetie14@gmail.com">
-              Email Me ✉
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="https://github.com/tilahungetie14-bot"
-              target="_blank"
-              rel="noopener noreferrer">
-              GitHub ↗
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="Tilahun_Getie_CV_Updated_Certificates.pdf"
-              download="Tilahun_Getie_CV_Updated_Certificates.pdf">
-              Download CV ↓
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <p>
-        © <span id="year"></span>
-        <strong>Tilahun Getie.</strong> All rights reserved.
-      </p>
-
-      <a class="back-to-top" href="#home">Back to top ↑</a>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+        // Automatically update footer year
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+    </script>
 
 </body>
 </html>
