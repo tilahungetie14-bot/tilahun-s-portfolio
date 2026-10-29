@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tilahun Getie's Software Engineering portfolio — Projects.">
+  <meta name="theme-color" content="#f8fafc">
+  <meta property="og:title" content="Tilahun Getie | Projects">
+  <meta property="og:description" content="Software Engineering student showcasing software projects, technical skills, and certificates.">
+  <meta property="og:type" content="website">
+  <title>Tilahun Getie | Projects</title>
+  <script>
+    try { const t = localStorage.getItem("tilahun-portfolio-theme"); if (t === "dark" || t === "light") document.documentElement.dataset.theme = t; } catch (_) {}
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="logo" href="index.html" aria-label="Tilahun home">Tilahun<span>.</span></a>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme"><span id="themeIcon" aria-hidden="true">🌙</span></button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+        <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="skills.html">Skills</a>
+                    <a href="projects.html" class="active" aria-current="page">Projects</a>
+                    <a href="certificates.html">Certificates</a>
+                    <a href="learning.html">Learning</a>
+                    <a href="contact.html">Contact</a>
+          <a class="nav-cv" href="Tilahun_Getie_CV_.pdf" download>Download CV</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main-content">
+    <section id="projects">
+<div class="container">
+<div class="section-heading reveal">
+<h2>My Projects</h2>
+<p>
+                        Some of the software projects I have worked on.
+                    </p>
+</div>
+<div class="projects-grid">
+<article class="project-card reveal">
+<div aria-hidden="true" class="project-icon">🗳️</div>
+<h3>DMU Election System</h3>
+<p>
+                            A university election management project
+                            designed to support election-related
+                            processes and improve the organization
+                            of voting activities.
+                        </p>
+<div class="tags">
+<span class="tag">Python</span>
+<span class="tag">Django</span>
+<span class="tag">Web Development</span>
+</div>
+<a class="project-link" href="https://github.com/tilahungetie14-bot/DMU-Election-System" rel="noopener noreferrer" target="_blank">
+                            View on GitHub →
+                        </a>
+</article>
+<article class="project-card reveal">
+<div aria-hidden="true" class="project-icon">🏦</div>
+<h3>Amharic Voice Banking System</h3>
+<p>
+                            A Python-based banking application featuring Amharic voice
+                            interaction, customer account operations, transaction
+                            history, balance checking, and database management.
+                        </p>
+<div class="tags">
+<span class="tag">Python</span>
+<span class="tag">SQLite</span>
+<span class="tag">Flask</span>
+<span class="tag">gTTS</span>
+</div>
+<a class="project-link" href="https://github.com/tilahungetie14-bot/AmharicBankingSystem" rel="noopener noreferrer" target="_blank">
+                            View on GitHub →
+                        </a>
+</article>
+</div>
+</div>
+</section>
+  </main>
+  <footer><div class="container"><p>&copy; <span id="currentYear"></span> Tilahun Getie. All rights reserved.</p></div></footer>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
